@@ -1,0 +1,6 @@
+@NetAng1.Server_HostAddress = http://localhost:5221
+
+GET {{NetAng1.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
