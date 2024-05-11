@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NetAng1.Server.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20240510211606_UndoInitMigration")]
-    partial class UndoInitMigration
+    [Migration("20240511141413_Mig1")]
+    partial class Mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,10 +33,7 @@ namespace NetAng1.Server.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("DepartmentId"));
 
-                    b.Property<int?>("HeadOfDepartmentID")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("HeadOfDepartmentId")
+                    b.Property<int>("HeadProfessorId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -45,9 +42,9 @@ namespace NetAng1.Server.Migrations
 
                     b.HasKey("DepartmentId");
 
-                    b.HasIndex("HeadOfDepartmentId");
+                    b.HasIndex("HeadProfessorId");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("NetAng1.Server.Models.Professor", b =>
@@ -73,7 +70,7 @@ namespace NetAng1.Server.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Professor");
+                    b.ToTable("Professors");
                 });
 
             modelBuilder.Entity("NetAng1.Server.Models.Student", b =>
@@ -106,13 +103,13 @@ namespace NetAng1.Server.Migrations
 
             modelBuilder.Entity("NetAng1.Server.Models.Department", b =>
                 {
-                    b.HasOne("NetAng1.Server.Models.Professor", "Professor")
+                    b.HasOne("NetAng1.Server.Models.Professor", "HeadProfessor")
                         .WithMany()
-                        .HasForeignKey("HeadOfDepartmentId")
+                        .HasForeignKey("HeadProfessorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Professor");
+                    b.Navigation("HeadProfessor");
                 });
 
             modelBuilder.Entity("NetAng1.Server.Models.Professor", b =>
@@ -129,12 +126,17 @@ namespace NetAng1.Server.Migrations
             modelBuilder.Entity("NetAng1.Server.Models.Student", b =>
                 {
                     b.HasOne("NetAng1.Server.Models.Department", "Department")
-                        .WithMany()
+                        .WithMany("Students")
                         .HasForeignKey("DepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("NetAng1.Server.Models.Department", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }
