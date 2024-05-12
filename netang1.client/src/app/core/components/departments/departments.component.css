@@ -1,0 +1,10 @@
+.form-control{
+    margin-top: -5px;
+    margin-left: 15px;
+    width: 200%;
+}
+.btn.btn-primary.btn-sm {
+    width: 250%;
+    margin-left: 20px;
+    margin-top: -5px;
+}

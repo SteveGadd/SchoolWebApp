@@ -1,0 +1,32 @@
+
+<div class="d-inline-flex flex-column">
+
+  <div class="d-inline-flex justify-content-start p-3" style="border-bottom: 1px solid rgba(0, 0, 255, 0.5);width: 500px;">
+    <label class="label label-default" style="width: 100%;" for="inlineFormInput">Name</label>
+    <input type="text" class="form-control" id="inlineFormInput" #departmentName placeholder="Department">
+    <button type="submit" (click)="showSingularDepartment(departmentName.value)" class="btn btn-primary btn-sm">Get department by name</button>
+  </div>
+
+  
+  <span class="border border-secondary m-3 p-3 rounded" style="width: 640px;">
+    <table class="table table-bordered" style="width: 600px;">
+      <thead>
+        <tr>
+          <th scope="col">Department ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Location</th>
+          <th scope="col">Head Professor's ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let department of departmentList">
+          <th scope="row">{{department.departmentId}}</th>
+          <td>{{department.name}}</td>
+          <td>{{department.location}}</td>
+          <td>{{department.headProfessorId}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </span>
+
+</div>
