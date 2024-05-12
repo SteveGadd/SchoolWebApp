@@ -21,6 +21,9 @@ namespace NetAng1.Server.Models
             modelBuilder.Entity<Department>()
                 .HasIndex(d => d.HeadProfessorId)
                 .IsUnique();
+            modelBuilder.Entity<Department>()
+                .HasIndex(d => d.Name)
+                .IsUnique();
         }
     }
 }

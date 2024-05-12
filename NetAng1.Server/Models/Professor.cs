@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace NetAng1.Server.Models
 {
@@ -16,6 +17,7 @@ namespace NetAng1.Server.Models
         public string Title { get; set; }
         public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
-        public Department Department { get; set; }
+        [JsonIgnore]
+        public virtual Department Department { get; set; }
     }
 }

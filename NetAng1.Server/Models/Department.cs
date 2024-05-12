@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace NetAng1.Server.Models
 {
@@ -17,8 +19,8 @@ namespace NetAng1.Server.Models
 
         public int? HeadProfessorId { get; set; }
         [ForeignKey("HeadProfessorId")]
-        public Professor? HeadProfessor { get; set; }
-        public virtual List<Student> Students { get; set; }
+        [JsonIgnore]
+        public virtual Professor? HeadProfessor { get; set; }
 
     }
 }
