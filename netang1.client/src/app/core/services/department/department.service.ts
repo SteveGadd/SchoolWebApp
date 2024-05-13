@@ -46,6 +46,13 @@ export class DepartmentService {
   }
   deleteDepartment(departmentId:string){
     console.log(`${this.apiUrl}/api/Department/${departmentId}`);
-    this.http.delete<any>(`${this.apiUrl}/api/Department/${departmentId}`);
+    this.http.delete<any>(`${this.apiUrl}/api/Department/${departmentId}`).subscribe(
+      (response) => {
+      console.log('Delete successful', response);
+    },
+    (error) => {
+      console.error('Delete failed', error);
+    }
+    );
   }
 }

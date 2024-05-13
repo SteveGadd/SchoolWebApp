@@ -35,7 +35,7 @@ export class DepartmentsComponent {
       alert('Please fill in the department name field.');
     }
   }
-  deleteDepartment(departmentName: string) {
-    this.departmentService.deleteDepartment(departmentName);
+  deleteDepartment(departmentId: string) {
+    this.departmentService.deleteDepartment(departmentId);
   }
 }
