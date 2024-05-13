@@ -1,10 +1,32 @@
 .form-control{
-    margin-top: -5px;
+    margin-top: 2px;
     margin-left: 15px;
-    width: 200%;
+    margin-right: 10px;
+    width: 400px;
+    height: 30px;
 }
-.btn.btn-primary.btn-sm {
-    width: 250%;
-    margin-left: 20px;
-    margin-top: -5px;
+.label.label-default{
+    margin-top: 5px;
+    margin-inline-end: 50px;
+}
+
+::placeholder {
+    opacity: 0.4;
+  }
+.borders{
+    border: 1px solid rgba(50, 50, 50, 0.3);
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-left: 8px;
+    padding: 5px;
+    width: 700px;
+}
+.addBtn {
+    margin-left: 185px;
+    width: 250px;
+}
+.otherBtns{
+    width: 150px;
+    margin-right: 10px;
+    height: 35px;
 }

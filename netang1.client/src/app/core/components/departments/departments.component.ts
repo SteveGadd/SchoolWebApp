@@ -9,11 +9,13 @@ import { DepartmentService } from '../../services/department/department.service'
 })
 export class DepartmentsComponent {
 
+
+
   departmentList: Department[] = [];
   showToggle: boolean = false;
   constructor(private departmentService: DepartmentService) {}
-  ngOnInit(): void {
-    
+  addDepartment(departmentName: string,departmentLocation: string,departmentHeadId: string) {
+    this.departmentService.addDepartment(departmentName,departmentLocation,departmentHeadId);
   }
   showAllDepartments():void{
     this.departmentService.getAllDepartments().subscribe(data => {
@@ -22,11 +24,18 @@ export class DepartmentsComponent {
     this.showToggle=true;
   }
   showSingularDepartment(departmentName:string):void{
-    this.departmentService.getSingularDepartment(departmentName).subscribe(data => {
-      console.log(data);
-      this.departmentList = [data];
-    });
-    this.showToggle=true;
+    if(departmentName){
+      this.departmentService.getSingularDepartment(departmentName).subscribe(data => {
+        console.log(data);
+        this.departmentList = [data];
+      });
+      this.showToggle=true;
+    }
+    else{
+      alert('Please fill in the department name field.');
+    }
   }
-
+  deleteDepartment(departmentName: string) {
+    this.departmentService.deleteDepartment(departmentName);
+  }
 }

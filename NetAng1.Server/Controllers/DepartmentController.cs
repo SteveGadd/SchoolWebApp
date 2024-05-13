@@ -57,10 +57,10 @@ namespace NetAng1.Server.Controllers
                 return Ok();
             }
         }
-        [HttpDelete]
-        public async Task<IActionResult> DeleteDepartmentByName([FromBody] string name)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDepartmentByName(int id)
         {
-            var departmentToDelete = await _schoolContext.Departments.FirstOrDefaultAsync(d => d.Name == name);
+            var departmentToDelete = await _schoolContext.Departments.FindAsync(id);
 
             if (departmentToDelete == null)
             {

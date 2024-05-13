@@ -1,14 +1,37 @@
-
-<div class="d-inline-flex flex-column">
-
-  <div class="d-inline-flex justify-content-start p-3" style="border-bottom: 1px solid rgba(0, 0, 255, 0.5);width: 500px;">
-    <label class="label label-default" style="width: 100%;" for="inlineFormInput">Name</label>
-    <input type="text" class="form-control" id="inlineFormInput" #departmentName placeholder="Department">
-    <button type="submit" (click)="showSingularDepartment(departmentName.value)" class="btn btn-primary btn-sm">Get department by name</button>
+<div class="d-inline-flex flex-row">
+  <div class="d-inline-flex flex-column">
+    <div class ="d-inline-flex flex-column borders" >
+      <div class="d-inline-flex justify-content-start p-2">
+        <label class="label label-default">Name</label>
+        <input type="text" class="form-control" #addDepartmentName placeholder="Name">
+      </div>
+      <div class="d-inline-flex justify-content-start p-2">
+        <label class="label label-default">Location</label>
+        <input type="text" class="form-control" #addDepartmentLocation placeholder="Location">
+      </div>
+      <div class="d-inline-flex justify-content-start p-2">
+        <label class="label label-default">Head professor's</label>
+        <input type="text" class="form-control" #addDepartmentHeadId placeholder="ID">
+      </div>
+      <div class="d-inline-flex justify-content-start p-2">
+        <button type="submit" (click)="addDepartment(addDepartmentName.value,addDepartmentLocation.value,addDepartmentHeadId.value)" class="btn btn-primary addBtn">ADD</button>
+      </div>
+    </div>
+    
+    <div class="d-inline-flex p-2 borders">
+      <label class="label label-default">ID</label>
+      <input type="text" class="form-control" #deletedDepartmentId placeholder="ID">
+      <button type="submit" (click)="deleteDepartment(deletedDepartmentId.value)" class="btn btn-primary btn-sm otherBtns">DELETE</button>
+    </div>
+    <div class="d-inline-flex p-2 borders">
+      <label class="label label-default">Name</label>
+      <input type="text" class="form-control" #gotDepartmentName placeholder="Department">
+      <button type="submit" (click)="showSingularDepartment(gotDepartmentName.value)" class="btn btn-primary btn-sm otherBtns">GET</button>
+      <button type="submit" (click)="showAllDepartments()" class="btn btn-primary btn-sm">Get all departments</button>
+    </div>
+      
   </div>
-
-  
-  <span class="border border-secondary m-3 p-3 rounded" style="width: 640px;">
+  <span class="border border-secondary m-3 p-3 rounded" *ngIf="showToggle" style="width: 640px;">
     <table class="table table-bordered" style="width: 600px;">
       <thead>
         <tr>
@@ -28,5 +51,4 @@
       </tbody>
     </table>
   </span>
-
 </div>

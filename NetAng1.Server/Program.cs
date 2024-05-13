@@ -13,7 +13,9 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins("http://localhost:4200")
-                .SetIsOriginAllowedToAllowWildcardSubdomains();
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+            
         });
 });
 var app = builder.Build();
